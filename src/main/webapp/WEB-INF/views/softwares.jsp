@@ -10,7 +10,7 @@
 
 	<ul>
 	<c:forEach items="${softwares}" var="s">
-		<li><c:out value="${s.name}]"/></li>
+		<li><c:out value="${s.name}"/></li>
 	</c:forEach>
 	</ul>
 

@@ -1,4 +1,4 @@
-package com.rosealacroix.catalog.service;
+package com.rosealacroix.catalog.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
