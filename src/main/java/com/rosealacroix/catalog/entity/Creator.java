@@ -6,28 +6,28 @@ import java.util.List;
 
 
 /**
- * The persistent class for the software database table.
+ * The persistent class for the creator database table.
  * 
  */
 @Entity
-@NamedQuery(name="Software.findAll", query="SELECT s FROM Software s")
-public class Software implements Serializable {
+@NamedQuery(name="Creator.findAll", query="SELECT c FROM Creator c")
+public class Creator implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="software_id")
+	@Column(name="vendor_id")
 	private Long id;
 
-	@Column(name="software_name")
+	@Column(name="vendor_name")
 	private String name;
 
 	//bi-directional many-to-many association to Content
 	@ManyToMany
 	@JoinTable(
-		name="is_compatible_with"
+		name="is_made_by"
 		, joinColumns={
-			@JoinColumn(name="software_id")
+			@JoinColumn(name="vendor_id")
 			}
 		, inverseJoinColumns={
 			@JoinColumn(name="content_id")
@@ -35,7 +35,7 @@ public class Software implements Serializable {
 		)
 	private List<Content> contents;
 
-	public Software() {
+	public Creator() {
 	}
 
 	public Long getId() {

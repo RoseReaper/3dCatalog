@@ -43,13 +43,14 @@ CREATE TABLE WEBSITE(
 )ENGINE=InnoDB;
 
 CREATE TABLE CONTENT(
-	content_id       Int  Auto_increment  NOT NULL,
-	content_sku      Int NOT NULL,
-	content_name     Varchar(100) NOT NULL,
-	content_isactive Bool NOT NULL,
-    content_url      Varchar(2000) NOT NULL,
-	type_id          Int NOT NULL,
-    website_id       Int,
+	content_id         Int  Auto_increment  NOT NULL,
+	content_sku        Varchar(15) NOT NULL,
+	content_name       Varchar(100) NOT NULL,
+	content_isactive   Bool NOT NULL,
+    content_url        Varchar(2000) NOT NULL,
+	type_id            Int NOT NULL,
+    website_id         Int,
+    discriminator_type Varchar(10),
     CONSTRAINT CONTENT_PK PRIMARY KEY (content_id),
     CONSTRAINT CONTENT_TYPE_FK FOREIGN KEY (type_id) REFERENCES TYPE(type_id),
 	CONSTRAINT CONTENT_WEBSITE_FK FOREIGN KEY (website_id) REFERENCES WEBSITE(website_id)
@@ -57,7 +58,6 @@ CREATE TABLE CONTENT(
 
 CREATE TABLE FIGURE(
 	figure_id   Int  Auto_increment  NOT NULL,
-	figure_name Varchar(30) NOT NULL,
 	gender_id   Int,
     content_id  Int NOT NULL,
     CONSTRAINT FIGURE_PK PRIMARY KEY (figure_id),

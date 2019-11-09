@@ -6,36 +6,36 @@ import java.util.List;
 
 
 /**
- * The persistent class for the software database table.
+ * The persistent class for the generation database table.
  * 
  */
 @Entity
-@NamedQuery(name="Software.findAll", query="SELECT s FROM Software s")
-public class Software implements Serializable {
+@NamedQuery(name="Generation.findAll", query="SELECT g FROM Generation g")
+public class Generation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="software_id")
+	@Column(name="generation_id")
 	private Long id;
 
-	@Column(name="software_name")
+	@Column(name="generation_name")
 	private String name;
 
-	//bi-directional many-to-many association to Content
+	//bi-directional many-to-many association to Figure
 	@ManyToMany
 	@JoinTable(
-		name="is_compatible_with"
+		name="belongs_to"
 		, joinColumns={
-			@JoinColumn(name="software_id")
+			@JoinColumn(name="generation_id")
 			}
 		, inverseJoinColumns={
-			@JoinColumn(name="content_id")
+			@JoinColumn(name="figure_id")
 			}
 		)
-	private List<Content> contents;
+	private List<Figure> figures;
 
-	public Software() {
+	public Generation() {
 	}
 
 	public Long getId() {
@@ -54,12 +54,12 @@ public class Software implements Serializable {
 		this.name = name;
 	}
 
-	public List<Content> getContents() {
-		return this.contents;
+	public List<Figure> getFigures() {
+		return this.figures;
 	}
 
-	public void setContents(List<Content> contents) {
-		this.contents = contents;
+	public void setFigures(List<Figure> figures) {
+		this.figures = figures;
 	}
 
 }
