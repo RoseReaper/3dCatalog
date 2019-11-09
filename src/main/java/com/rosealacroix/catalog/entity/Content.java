@@ -25,7 +25,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @NamedQuery(name="Content.findAll", query="SELECT c FROM Content c")
-@DiscriminatorColumn(name="discriminator_type")
+@DiscriminatorColumn(name="content_discriminatortype")
 @DiscriminatorValue("content")
 public class Content implements Serializable {
 	private static final long serialVersionUID = 1L;
