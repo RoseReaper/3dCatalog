@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Content</title>
-<%@include file="headerscriptsandstyles.html" %>
+<%@include file="headerscriptsandstyles.jsp"%>
 </head>
 <body>
+<%@include file="navbar.jsp"%>
 
 	<table id="content_result" class="display">
 		<thead>
@@ -15,14 +15,20 @@
 				<th>Name</th>
 				<th>SKU</th>
 				<th>Type</th>
+				<th>Software</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${contents}" var="s">
+			<c:forEach items="${contents}" var="c">
 				<tr>
-					<td><c:out value="${s.name}" /></td>
-					<td><c:out value="${s.sku}" /></td>
-					<td><c:out value="${s.type.name}" /></td>
+					<td><c:out value="${c.name}" /></td>
+					<td><c:out value="${c.sku}" /></td>
+					<td><c:out value="${c.type.name}" /></td>
+					<td>
+						<c:forEach items="${c.softwares}" var="s">
+							<c:out value="${s.name}" />
+						</c:forEach>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

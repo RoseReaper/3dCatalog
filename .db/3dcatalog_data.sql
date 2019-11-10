@@ -18,3 +18,18 @@ INSERT INTO FIGURE (content_id)
     
 INSERT INTO CONTENT (content_sku, content_name, content_isactive, content_url, content_discriminatortype, type_id)
 	VALUES ("697262866", "Long dress", 1, "http://machin.com", "content", 2);
+    
+INSERT INTO SOFTWARE (software_name)
+	VALUES("Poser"),
+		  ("Blender");
+          
+INSERT INTO is_compatible_with (software_id, content_id)
+	VALUES (1, 1),
+		   (1, 2),
+           (2, 1),
+           (2, 2),
+           (2, 3);
+           
+INSERT INTO GENDER (gender_name)
+	VALUES ("Male"),
+		   ("Female");

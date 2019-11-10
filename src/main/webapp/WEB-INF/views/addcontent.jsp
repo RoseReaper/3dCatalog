@@ -5,34 +5,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Add content</title>
-<%@include file="headerscriptsandstyles.html"%>
+<%@include file="headerscriptsandstyles.jsp"%>
 </head>
 <body>
+<%@include file="navbar.jsp"%>
 
 	<form:form servletRelativeAction="/addcontent" modelAttribute="content">
-		<p>
+		<div class="form-group">
 			<label>Name : </label>
-			<form:input path="name" />
+			<form:input path="name" class="form-control" />
 			<form:errors path="name" />
-		</p>
-		<p>
+		</div>
+		<div class="form-group">
 			<label>SKU : </label>
-			<form:input path="sku" />
+			<form:input path="sku" class="form-control" />
 			<form:errors path="sku" />
-		</p>
-		<p>
+		</div>
+		<div class="form-group">
 			<label>Type : </label>
-			<form:select path="type">
+			<form:select path="type.id" class="form-control">
 				<form:option value="-" label="--Please Select" />
 				<form:options items="${types}" itemValue="id" itemLabel="name" />
 			</form:select>
-		</p>
-		<p>
+		</div>
+		<div class="form-group">
 			<label>URL : </label>
-			<form:input path="url" />
+			<form:input path="url" class="form-control" />
 			<form:errors path="url" />
-		</p>
-		<button type="submit">Submit</button>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
 	</form:form>
 
 </body>
