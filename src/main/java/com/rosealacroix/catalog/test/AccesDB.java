@@ -22,7 +22,8 @@ public class AccesDB {
 		
 		try {
 			
-			TypedQuery<Content> query = em.createQuery("select c from Content c", Content.class);
+			TypedQuery<Content> query = em.createQuery("select c from Content c where c.name = :name", Content.class);
+			query.setParameter("name", "toto");
 			List<Content> result = query.getResultList();
 			
 			for(Content s : result) {
