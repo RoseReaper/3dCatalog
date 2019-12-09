@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -29,10 +30,10 @@ public class ContentController {
 		return "contentlist";
 	}
 	
-	@GetMapping(path="/contentdetail/{id}")
-	public String findById(Model model, Long id) {
+	@GetMapping(path="/contentdetail")
+	public String findById(Model model, long id) {
 		Optional<Content> contentdetail = contentService.findById(id);
-		model.addAttribute("contentdetail", contentdetail);
+		model.addAttribute("contentdetail", contentdetail.get());
 		return "contentdetail";
 	}
 	

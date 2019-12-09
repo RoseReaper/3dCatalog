@@ -9,7 +9,9 @@
 <body>
 <%@include file="navbar.jsp"%>
 
-	<table id="contentresult" class="display">
+	<h1>Content list</h1>
+
+	<table id="contentlist" class="display">
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -21,7 +23,7 @@
 		<tbody>
 			<c:forEach items="${contentlist}" var="c">
 				<tr>
-					<td><a href="<c:url value="contentdetail">
+					<td><a href="<c:url value="/contentdetail">
 						<c:param name="id" value="${c.id}"/></c:url>">
 							<c:out value="${c.name}" /></a></td>
 					<td><c:out value="${c.sku}" /></td>
@@ -38,7 +40,7 @@
 
 	<script>
 		$(document).ready(function() {
-			$('#contentresult').DataTable();
+			$('#contentlist').DataTable();
 		});
 	</script>
 

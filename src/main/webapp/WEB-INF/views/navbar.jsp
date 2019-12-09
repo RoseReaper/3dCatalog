@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:url value="/content" var="home" />
+<c:url value="/home" var="home" />
 <c:url value="/contentadd" var="contentadd" />
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

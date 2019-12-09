@@ -9,14 +9,16 @@
 <body>
 <%@include file="navbar.jsp"%>
 
+	<h1>Content details</h1>
+
 	<ul>
-		<li><c:out value="${content.name}" /></li>
-		<li><c:out value="${content.sku}" /></li>
-		<li><c:out value="${content.type.id}" /></li>
-		<li><c:out value="${content.url}" /></li>
+		<li><c:out value="${contentdetail.name}" /></li>
+		<li><c:out value="${contentdetail.sku}" /></li>
+		<li><c:out value="${contentdetail.type.id}" /></li>
+		<li><c:out value="${contentdetail.url}" /></li>
 	</ul>
 	<button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt">Modify</i></button>
-	<button type="submit" class="btn btn-primary"><i class="fas fa-trash-alt">Delete</i></button>
+	<button type="submit" class="btn btn-secondary"><i class="fas fa-trash-alt">Delete</i></button>
 
 </body>
 </html>

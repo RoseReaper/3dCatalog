@@ -21,7 +21,7 @@ public class ContentService {
 		return contentRepository.findAllWithRelations();
 	}
 	
-	public Optional<Content> findById(Long id) {
+	public Optional<Content> findById(long id) {
         return contentRepository.findById(id);
     }
 	
