@@ -35,7 +35,7 @@ public class Figure extends Content implements Serializable {
 			@JoinColumn(name="content_id")
 			}
 		)
-	private List<Content> contents;
+	private List<Content> contentlist;
 
 	public Figure() {
 	}
@@ -56,12 +56,12 @@ public class Figure extends Content implements Serializable {
 		this.gender = gender;
 	}
 
-	public List<Content> getContents() {
-		return this.contents;
+	public List<Content> getContentList() {
+		return this.contentlist;
 	}
 
-	public void setContents(List<Content> contents) {
-		this.contents = contents;
+	public void setContentList(List<Content> contentlist) {
+		this.contentlist = contentlist;
 	}
 
 }

@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -59,15 +58,15 @@ public class Content implements Serializable {
 	private Website website;
 
 	//bi-directional many-to-many association to Software
-	@ManyToMany(mappedBy="contents")
+	@ManyToMany(mappedBy="contentlist")
 	private List<Software> softwares;
 
 	//bi-directional many-to-many association to Creator
-	@ManyToMany(mappedBy="contents")
+	@ManyToMany(mappedBy="contentlist")
 	private List<Creator> creators;
 
 	//bi-directional many-to-many association to Figure
-	@ManyToMany(mappedBy="contents")
+	@ManyToMany(mappedBy="contentlist")
 	private List<Figure> figures;
 
 	public Content() {

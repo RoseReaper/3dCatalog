@@ -15,6 +15,8 @@
 		<li><c:out value="${content.type.id}" /></li>
 		<li><c:out value="${content.url}" /></li>
 	</ul>
+	<button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt">Modify</i></button>
+	<button type="submit" class="btn btn-primary"><i class="fas fa-trash-alt">Delete</i></button>
 
 </body>
 </html>

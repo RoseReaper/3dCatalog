@@ -10,7 +10,7 @@
 <body>
 <%@include file="navbar.jsp"%>
 
-	<form:form servletRelativeAction="/addcontent" modelAttribute="content">
+	<form:form servletRelativeAction="/contentadd" modelAttribute="content">
 		<div class="form-group">
 			<label>Name : </label>
 			<form:input path="name" class="form-control" />

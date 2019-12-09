@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/content" var="home" />
-<c:url value="/addcontent" var="addcontent" />
+<c:url value="/contentadd" var="contentadd" />
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<a class="navbar-brand" href="${home}">3D Catalog</a>
@@ -16,7 +16,7 @@
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</a>
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-			        	<a class="dropdown-item" href="${addcontent}">Content</a>
+			        	<a class="dropdown-item" href="${contentadd}">Content</a>
 			        	<a class="dropdown-item" href="#">Type</a>
 			        	<a class="dropdown-item" href="#">Figure</a>
 			        	<a class="dropdown-item" href="#">Generation</a>

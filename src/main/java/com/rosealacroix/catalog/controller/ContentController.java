@@ -1,6 +1,7 @@
 package com.rosealacroix.catalog.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,10 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.rosealacroix.catalog.entity.Content;
-import com.rosealacroix.catalog.entity.Software;
 import com.rosealacroix.catalog.entity.Type;
 import com.rosealacroix.catalog.service.ContentService;
-import com.rosealacroix.catalog.service.SoftwareService;
 import com.rosealacroix.catalog.service.TypeService;
 
 @Controller
@@ -23,21 +22,28 @@ public class ContentController {
 	@Autowired
 	private TypeService typeService;
 	
-	@GetMapping(path="/content")
+	@GetMapping(path="/home")
 	public String getAll(Model model) {
-		List<Content> contents = contentService.getAll();
-		model.addAttribute("contents", contents);
-		return "contents";
+		List<Content> contentlist = contentService.getAll();
+		model.addAttribute("contentlist", contentlist);
+		return "contentlist";
 	}
 	
-	@GetMapping(path="/addcontent")
+	@GetMapping(path="/contentdetail/{id}")
+	public String findById(Model model, Long id) {
+		Optional<Content> contentdetail = contentService.findById(id);
+		model.addAttribute("contentdetail", contentdetail);
+		return "contentdetail";
+	}
+	
+	@GetMapping(path="/contentadd")
 	public String displayForm(Model model, Content content) {
 		List<Type> types = typeService.getAll();
 		model.addAttribute("types", types);
-		return "addcontent";
+		return "contentadd";
 	}
 	
-	@PostMapping(path="/addcontent")
+	@PostMapping(path="/contentadd")
 	public String submitContent(Content content) {
 		contentService.save(content);
 		return "contentdetail";
