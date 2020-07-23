@@ -2,6 +2,8 @@ package com.rosealacroix.catalog.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class TypeService {
 	
 	public List<Type> getAll() {
 		return typeRepository.findAll();
+	}
+	
+	@Transactional
+	public void save(Type type) {
+		typeRepository.save(type);
 	}
 
 }

@@ -9,16 +9,17 @@
 <body>
 <%@include file="navbar.jsp"%>
 
-	<h1>Content details</h1>
+	<h1>Content detail</h1>
 
 	<ul>
-		<li><c:out value="${contentdetail.name}" /></li>
-		<li><c:out value="${contentdetail.sku}" /></li>
-		<li><c:out value="${contentdetail.type.id}" /></li>
-		<li><c:out value="${contentdetail.url}" /></li>
+		<li>Name: <c:out value="${contentdetail.name}" /></li>
+		<li>SKU: <c:out value="${contentdetail.sku}" /></li>
+		<li>Type: <c:out value="${contentdetail.type.name}" /></li>
+<%-- 		<li>Generation: <c:out value="${contentdetail.generation.name}" /></li> --%>
+		<li>URL: <c:out value="${contentdetail.url}" /></li>
 	</ul>
-	<button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt">Modify</i></button>
-	<button type="submit" class="btn btn-secondary"><i class="fas fa-trash-alt">Delete</i></button>
+	<button type="button" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Modify</button>
+	<button type="button" class="btn btn-secondary"><i class="fas fa-trash-alt"></i> Delete</button>
 
 </body>
 </html>

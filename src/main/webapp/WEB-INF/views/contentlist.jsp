@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Content</title>
+<title>Content list</title>
 <%@include file="headerscriptsandstyles.jsp"%>
 </head>
 <body>
@@ -29,8 +29,9 @@
 					<td><c:out value="${c.sku}" /></td>
 					<td><c:out value="${c.type.name}" /></td>
 					<td>
-						<c:forEach items="${c.softwares}" var="s">
+						<c:forEach items="${c.softwares}" var="s" varStatus="loopStatus">
 							<c:out value="${s.name}" />
+							<c:if test="${!loopStatus.last}">/</c:if>
 						</c:forEach>
 					</td>
 				</tr>

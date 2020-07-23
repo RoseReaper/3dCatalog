@@ -4,13 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Software</title>
+<title>Creator list</title>
+<%@include file="headerscriptsandstyles.jsp"%>
 </head>
 <body>
+<%@include file="navbar.jsp"%>
+
+	<h1>All creators</h1>
 
 	<ul>
-	<c:forEach items="${softwares}" var="s">
-		<li><c:out value="${s.name}"/></li>
+	<c:forEach items="${creators}" var="c">
+		<li><c:out value="${c.name}"/></li>
 	</c:forEach>
 	</ul>
 

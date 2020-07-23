@@ -61,5 +61,14 @@ public class Software implements Serializable {
 	public void setContentList(List<Content> contentlist) {
 		this.contentlist = contentlist;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Software)) {
+			return false;
+		}
+		Software s = (Software) obj;
+		return this.id !=null && this.id.equals(s.id);
+	}
 
 }
