@@ -22,10 +22,6 @@ public class Gender implements Serializable {
 	@Column(name="gender_name")
 	private String name;
 
-	//bi-directional many-to-one association to Figure
-	@OneToMany(mappedBy="gender")
-	private List<Figure> figures;
-
 	public Gender() {
 	}
 
@@ -43,28 +39,6 @@ public class Gender implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Figure> getFigures() {
-		return this.figures;
-	}
-
-	public void setFigures(List<Figure> figures) {
-		this.figures = figures;
-	}
-
-	public Figure addFigure(Figure figure) {
-		getFigures().add(figure);
-		figure.setGender(this);
-
-		return figure;
-	}
-
-	public Figure removeFigure(Figure figure) {
-		getFigures().remove(figure);
-		figure.setGender(null);
-
-		return figure;
 	}
 
 }

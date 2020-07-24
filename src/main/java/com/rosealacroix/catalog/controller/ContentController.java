@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.rosealacroix.catalog.entity.Content;
 import com.rosealacroix.catalog.entity.Creator;
+import com.rosealacroix.catalog.entity.Figure;
 import com.rosealacroix.catalog.entity.Software;
 import com.rosealacroix.catalog.entity.Type;
 import com.rosealacroix.catalog.entity.Website;
 import com.rosealacroix.catalog.service.ContentService;
 import com.rosealacroix.catalog.service.CreatorService;
+import com.rosealacroix.catalog.service.FigureService;
 import com.rosealacroix.catalog.service.SoftwareService;
 import com.rosealacroix.catalog.service.TypeService;
 import com.rosealacroix.catalog.service.WebsiteService;
@@ -33,6 +35,8 @@ public class ContentController {
 	private WebsiteService websiteService;
 	@Autowired
 	private CreatorService creatorService;
+	@Autowired
+	private FigureService figureService;
 
 	@GetMapping(path = "/home")
 	public String getAll(Model model) {
@@ -54,10 +58,12 @@ public class ContentController {
 		List<Software> softwares = softwareService.getAll();
 		List<Website> websites = websiteService.getAll();
 		List<Creator> creators = creatorService.getAll();
+		List<Figure> figures = figureService.getAll();
 		model.addAttribute("types", types);
 		model.addAttribute("softwares", softwares);
 		model.addAttribute("websites", websites);
 		model.addAttribute("creators", creators);
+		model.addAttribute("figures", figures);
 		return "contentadd";
 	}
 

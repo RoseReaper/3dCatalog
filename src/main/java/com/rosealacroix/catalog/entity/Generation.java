@@ -22,19 +22,6 @@ public class Generation implements Serializable {
 	@Column(name="generation_name")
 	private String name;
 
-	//bi-directional many-to-many association to Figure
-	@ManyToMany
-	@JoinTable(
-		name="belongs_to"
-		, joinColumns={
-			@JoinColumn(name="generation_id")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="figure_id")
-			}
-		)
-	private List<Figure> figures;
-
 	public Generation() {
 	}
 
@@ -52,14 +39,6 @@ public class Generation implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Figure> getFigures() {
-		return this.figures;
-	}
-
-	public void setFigures(List<Figure> figures) {
-		this.figures = figures;
 	}
 
 }

@@ -16,7 +16,16 @@ public class Figure extends Content implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	//bi-directional many-to-many association to Generation
-	@ManyToMany(mappedBy="figures")
+	@ManyToMany
+	@JoinTable(
+		name="belongs_to"
+		, joinColumns={
+			@JoinColumn(name="figure_id")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="generation_id")
+			}
+		)
 	private List<Generation> generations;
 
 	//bi-directional many-to-one association to Gender

@@ -31,6 +31,20 @@
 				<form:options items="${types}" itemValue="id" itemLabel="name" />
 			</form:select>
 		</div>
+ 		<div class="form-group">
+ 			<label>Is this content a new figure?</label>
+ 			<form:checkbox path="" value="" />
+			<label>Gender: </label>
+			<form:select path="gender.id" class="form-control">
+				<form:option value="" label="--Please Select" />
+				<form:options items="${genders}" itemValue="id" itemLabel="name" />
+			</form:select>
+			<label>Generation: </label>
+			<form:select path="generation.id" class="form-control">
+				<form:option value="" label="--Please Select" />
+				<form:options items="${generations}" itemValue="id" itemLabel="name" />
+			</form:select>
+ 		</div>
 		<div class="form-group">
 			<label>Creator: </label>
 			<form:select multiple="true" path="creators" class="form-control">

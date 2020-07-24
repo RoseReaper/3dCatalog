@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.rosealacroix.catalog.entity.Generation;
-import com.rosealacroix.catalog.entity.Software;
 import com.rosealacroix.catalog.service.GenerationService;
 
 @Controller
