@@ -9,7 +9,7 @@ import com.rosealacroix.catalog.entity.Content;
 
 public interface ContentRepository extends JpaRepository<Content, Long> {
 	
-	@Query("select distinct c from Content c left join fetch c.softwares order by c.name")
-	List<Content> findAllWithRelations();
+	@Query("select distinct c from Content c where c.active = true order by c.name")
+	List<Content> findAllActive();
 
 }

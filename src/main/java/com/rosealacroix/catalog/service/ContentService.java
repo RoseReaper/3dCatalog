@@ -18,7 +18,7 @@ public class ContentService {
 	private ContentRepository contentRepository;
 	
 	public List<Content> getAll() {
-		return contentRepository.findAllWithRelations();
+		return contentRepository.findAllActive();
 	}
 	
 	public Optional<Content> findById(long id) {
@@ -26,7 +26,8 @@ public class ContentService {
     }
 	
 	@Transactional
-	public void save(Content content) {
+	public void create(Content content) {
+		content.setActive(true);
 		contentRepository.save(content);
 	}
 

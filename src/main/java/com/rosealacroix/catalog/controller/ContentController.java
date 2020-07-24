@@ -63,7 +63,7 @@ public class ContentController {
 
 	@PostMapping(path = "/contentadd")
 	public String submitContent(Content content) {
-		contentService.save(content);
+		contentService.create(content);
 		return "redirect:/home";
 	}
 

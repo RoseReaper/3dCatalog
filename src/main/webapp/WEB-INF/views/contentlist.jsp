@@ -17,6 +17,7 @@
 				<th>Name</th>
 				<th>SKU</th>
 				<th>Type</th>
+				<th>Creator</th>
 				<th>Software</th>
 			</tr>
 		</thead>
@@ -28,6 +29,12 @@
 							<c:out value="${c.name}" /></a></td>
 					<td><c:out value="${c.sku}" /></td>
 					<td><c:out value="${c.type.name}" /></td>
+					<td>
+						<c:forEach items="${c.creators}" var="cr" varStatus="loopStatus">
+							<c:out value="${cr.name}" />
+							<c:if test="${!loopStatus.last}">/</c:if>
+						</c:forEach>
+					</td>
 					<td>
 						<c:forEach items="${c.softwares}" var="s" varStatus="loopStatus">
 							<c:out value="${s.name}" />
