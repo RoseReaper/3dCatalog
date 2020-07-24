@@ -1,8 +1,13 @@
 package com.rosealacroix.catalog.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 
 /**
@@ -39,6 +44,25 @@ public class Generation implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Generation)) {
+			return false;
+		}
+		Generation generation = (Generation) obj;
+		return this.id !=null && this.id.equals(generation.id);
+	}
+	
+	public static Generation valueOf(String id) {
+		if (id == null || id.isEmpty()) {
+			return null;
+		}
+		Long idLong = Long.valueOf(id);
+		Generation generation = new Generation();
+		generation.setId(idLong);
+		return generation;
 	}
 
 }

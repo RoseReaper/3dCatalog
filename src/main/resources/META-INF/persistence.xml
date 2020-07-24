@@ -8,7 +8,6 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>com.rosealacroix.catalog.entity.Content</class>
 		<class>com.rosealacroix.catalog.entity.Creator</class>
-		<class>com.rosealacroix.catalog.entity.Figure</class>
 		<class>com.rosealacroix.catalog.entity.Gender</class>
 		<class>com.rosealacroix.catalog.entity.Generation</class>
 		<class>com.rosealacroix.catalog.entity.Software</class>

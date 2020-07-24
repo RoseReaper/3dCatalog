@@ -1,7 +1,5 @@
 DROP DATABASE IF EXISTS 3dcatalog;
-
 SET NAMES utf8;
-
 CREATE DATABASE 3dcatalog;
 USE 3dcatalog;
 
@@ -50,35 +48,19 @@ CREATE TABLE CONTENT(
     content_url               Varchar(2000) NOT NULL,
 	type_id                   Int NOT NULL,
     website_id                Int,
-    content_discriminatortype Varchar(10) NOT NULL,
+	gender_id   Int,
     CONSTRAINT CONTENT_PK PRIMARY KEY (content_id),
     CONSTRAINT CONTENT_TYPE_FK FOREIGN KEY (type_id) REFERENCES TYPE(type_id),
-	CONSTRAINT CONTENT_WEBSITE_FK FOREIGN KEY (website_id) REFERENCES WEBSITE(website_id)
-)ENGINE=InnoDB;
-
-CREATE TABLE FIGURE(
-	figure_id   Int  Auto_increment  NOT NULL,
-	gender_id   Int,
-    content_id  Int NOT NULL,
-    CONSTRAINT FIGURE_PK PRIMARY KEY (figure_id),
-    CONSTRAINT FIGURE_GENDER_FK FOREIGN KEY (gender_id) REFERENCES GENDER(gender_id),
-	CONSTRAINT FIGURE_CONTENT_AK UNIQUE (content_id)
-)ENGINE=InnoDB;
-
-CREATE TABLE works_with(
-	content_id Int NOT NULL,
-	figure_id  Int NOT NULL,
-    CONSTRAINT works_with_PK PRIMARY KEY (content_id,figure_id),
-    CONSTRAINT works_with_CONTENT_FK FOREIGN KEY (content_id) REFERENCES CONTENT(content_id),
-    CONSTRAINT works_with_FIGURE_FK FOREIGN KEY (figure_id) REFERENCES FIGURE(figure_id)
+	CONSTRAINT CONTENT_WEBSITE_FK FOREIGN KEY (website_id) REFERENCES WEBSITE(website_id),
+    CONSTRAINT CONTENT_GENDER_FK FOREIGN KEY (gender_id) REFERENCES GENDER(gender_id)
 )ENGINE=InnoDB;
 
 CREATE TABLE belongs_to(
 	generation_id Int NOT NULL,
-	figure_id     Int NOT NULL,
-    CONSTRAINT belongs_to_PK PRIMARY KEY (generation_id,figure_id),
+	content_id     Int NOT NULL,
+    CONSTRAINT belongs_to_PK PRIMARY KEY (generation_id,content_id),
     CONSTRAINT belongs_to_GENERATION_FK FOREIGN KEY (generation_id) REFERENCES GENERATION(generation_id),
-    CONSTRAINT belongs_to_FIGURE_FK FOREIGN KEY (figure_id) REFERENCES FIGURE(figure_id)
+    CONSTRAINT belongs_to_CONTENT_FK FOREIGN KEY (content_id) REFERENCES CONTENT(content_id)
 )ENGINE=InnoDB;
 
 CREATE TABLE is_compatible_with(

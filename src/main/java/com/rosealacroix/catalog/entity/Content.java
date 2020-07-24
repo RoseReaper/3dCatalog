@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,8 +24,6 @@ import javax.persistence.NamedQuery;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @NamedQuery(name="Content.findAll", query="SELECT c FROM Content c")
-@DiscriminatorColumn(name="content_discriminatortype")
-@DiscriminatorValue("content")
 public class Content implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -84,9 +80,23 @@ public class Content implements Serializable {
 		)
 	private List<Creator> creators;
 
-	//bi-directional many-to-many association to Figure
-	@ManyToMany(mappedBy="contentlist")
-	private List<Figure> figures;
+	//bi-directional many-to-many association to Generation
+	@ManyToMany
+	@JoinTable(
+		name="belongs_to"
+		, joinColumns={
+			@JoinColumn(name="content_id")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="generation_id")
+			}
+		)
+	private List<Generation> generations;
+
+	//bi-directional many-to-one association to Gender
+	@ManyToOne
+	@JoinColumn(name="gender_id")
+	private Gender gender;
 
 	public Content() {
 	}
@@ -162,13 +172,21 @@ public class Content implements Serializable {
 	public void setCreators(List<Creator> creators) {
 		this.creators = creators;
 	}
-
-	public List<Figure> getFigures() {
-		return this.figures;
+	
+	public List<Generation> getGenerations() {
+		return generations;
 	}
 
-	public void setFigures(List<Figure> figures) {
-		this.figures = figures;
+	public void setGenerations(List<Generation> generations) {
+		this.generations = generations;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
 
 }

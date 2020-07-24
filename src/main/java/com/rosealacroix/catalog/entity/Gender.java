@@ -21,6 +21,10 @@ public class Gender implements Serializable {
 
 	@Column(name="gender_name")
 	private String name;
+	
+	//bi-directional many-to-one association to Content
+	@OneToMany(mappedBy="gender")
+	private List<Content> contents;
 
 	public Gender() {
 	}
