@@ -67,8 +67,18 @@ public class Software implements Serializable {
 		if (!(obj instanceof Software)) {
 			return false;
 		}
-		Software s = (Software) obj;
-		return this.id !=null && this.id.equals(s.id);
+		Software software = (Software) obj;
+		return this.id !=null && this.id.equals(software.id);
+	}
+	
+	public static Software valueOf(String id) {
+		if (id == null || id.isEmpty()) {
+			return null;
+		}
+		Long idLong = Long.valueOf(id);
+		Software software = new Software();
+		software.setId(idLong);
+		return software;
 	}
 
 }

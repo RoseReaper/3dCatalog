@@ -1,6 +1,7 @@
 package com.rosealacroix.catalog.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -19,6 +20,10 @@ public class SoftwareService {
 	public List<Software> getAll() {
 		return softwareRepository.findAll();
 	}
+	
+	public Optional<Software> findById(long id) {
+        return softwareRepository.findById(id);
+    }
 	
 	@Transactional
 	public void save(Software software) {

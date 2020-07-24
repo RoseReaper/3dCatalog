@@ -61,5 +61,24 @@ public class Creator implements Serializable {
 	public void setContentList(List<Content> contentlist) {
 		this.contentlist = contentlist;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Creator)) {
+			return false;
+		}
+		Creator creator = (Creator) obj;
+		return this.id !=null && this.id.equals(creator.id);
+	}
+	
+	public static Creator valueOf(String id) {
+		if (id == null || id.isEmpty()) {
+			return null;
+		}
+		Long idLong = Long.valueOf(id);
+		Creator creator = new Creator();
+		creator.setId(idLong);
+		return creator;
+	}
 
 }

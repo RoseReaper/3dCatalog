@@ -11,22 +11,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.rosealacroix.catalog.entity.Content;
 import com.rosealacroix.catalog.entity.Creator;
-import com.rosealacroix.catalog.entity.Gender;
-import com.rosealacroix.catalog.entity.Generation;
 import com.rosealacroix.catalog.entity.Software;
 import com.rosealacroix.catalog.entity.Type;
 import com.rosealacroix.catalog.entity.Website;
 import com.rosealacroix.catalog.service.ContentService;
 import com.rosealacroix.catalog.service.CreatorService;
-import com.rosealacroix.catalog.service.GenderService;
-import com.rosealacroix.catalog.service.GenerationService;
 import com.rosealacroix.catalog.service.SoftwareService;
 import com.rosealacroix.catalog.service.TypeService;
 import com.rosealacroix.catalog.service.WebsiteService;
 
 @Controller
 public class ContentController {
-	
+
 	@Autowired
 	private ContentService contentService;
 	@Autowired
@@ -37,22 +33,22 @@ public class ContentController {
 	private WebsiteService websiteService;
 	@Autowired
 	private CreatorService creatorService;
-	
-	@GetMapping(path="/home")
+
+	@GetMapping(path = "/home")
 	public String getAll(Model model) {
 		List<Content> contentlist = contentService.getAll();
 		model.addAttribute("contentlist", contentlist);
 		return "contentlist";
 	}
-	
-	@GetMapping(path="/contentdetail")
+
+	@GetMapping(path = "/contentdetail")
 	public String findById(Model model, long id) {
 		Optional<Content> contentdetail = contentService.findById(id);
 		model.addAttribute("contentdetail", contentdetail.get());
 		return "contentdetail";
 	}
-	
-	@GetMapping(path="/contentadd")
+
+	@GetMapping(path = "/contentadd")
 	public String displayForm(Model model, Content content) {
 		List<Type> types = typeService.getAll();
 		List<Software> softwares = softwareService.getAll();
@@ -64,8 +60,8 @@ public class ContentController {
 		model.addAttribute("creators", creators);
 		return "contentadd";
 	}
-	
-	@PostMapping(path="/contentadd")
+
+	@PostMapping(path = "/contentadd")
 	public String submitContent(Content content) {
 		contentService.save(content);
 		return "redirect:/home";
