@@ -22,19 +22,6 @@ public class Creator implements Serializable {
 	@Column(name="vendor_name")
 	private String name;
 
-	//bi-directional many-to-many association to Content
-	@ManyToMany
-	@JoinTable(
-		name="is_made_by"
-		, joinColumns={
-			@JoinColumn(name="vendor_id")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="content_id")
-			}
-		)
-	private List<Content> contentlist;
-
 	public Creator() {
 	}
 
@@ -54,14 +41,6 @@ public class Creator implements Serializable {
 		this.name = name;
 	}
 
-	public List<Content> getContentList() {
-		return this.contentlist;
-	}
-
-	public void setContentList(List<Content> contentlist) {
-		this.contentlist = contentlist;
-	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Creator)) {

@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
@@ -57,12 +58,30 @@ public class Content implements Serializable {
 	@JoinColumn(name="website_id")
 	private Website website;
 
-	//bi-directional many-to-many association to Software
-	@ManyToMany(mappedBy="contentlist")
+	//many-to-many association to Software
+	@ManyToMany
+	@JoinTable(
+			name="is_compatible_with"
+			, joinColumns={
+				@JoinColumn(name="content_id")
+				}
+			, inverseJoinColumns={
+				@JoinColumn(name="software_id")
+				}
+			)
 	private List<Software> softwares;
 
-	//bi-directional many-to-many association to Creator
-	@ManyToMany(mappedBy="contentlist")
+	//many-to-many association to Creator
+	@ManyToMany
+	@JoinTable(
+		name="is_made_by"
+		, joinColumns={
+			@JoinColumn(name="content_id")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="vendor_id")
+			}
+		)
 	private List<Creator> creators;
 
 	//bi-directional many-to-many association to Figure

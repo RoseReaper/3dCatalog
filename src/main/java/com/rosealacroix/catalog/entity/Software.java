@@ -1,8 +1,13 @@
 package com.rosealacroix.catalog.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 
 /**
@@ -21,19 +26,6 @@ public class Software implements Serializable {
 
 	@Column(name="software_name")
 	private String name;
-
-	//bi-directional many-to-many association to Content
-	@ManyToMany
-	@JoinTable(
-		name="is_compatible_with"
-		, joinColumns={
-			@JoinColumn(name="software_id")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="content_id")
-			}
-		)
-	private List<Content> contentlist;
 
 	public Software() {
 	}
@@ -54,14 +46,6 @@ public class Software implements Serializable {
 		this.name = name;
 	}
 
-	public List<Content> getContentList() {
-		return this.contentlist;
-	}
-
-	public void setContentList(List<Content> contentlist) {
-		this.contentlist = contentlist;
-	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Software)) {
