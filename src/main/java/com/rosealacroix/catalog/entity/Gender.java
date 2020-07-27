@@ -53,5 +53,24 @@ public class Gender implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Gender)) {
+			return false;
+		}
+		Gender gender = (Gender) obj;
+		return this.id !=null && this.id.equals(gender.id);
+	}
+	
+	public static Gender valueOf(String id) {
+		if (id == null || id.isEmpty()) {
+			return null;
+		}
+		Long idLong = Long.valueOf(id);
+		Gender gender = new Gender();
+		gender.setId(idLong);
+		return gender;
+	}
 
 }

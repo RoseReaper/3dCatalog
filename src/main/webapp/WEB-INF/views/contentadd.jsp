@@ -36,7 +36,7 @@
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label>Gender</label>
-				<form:select path="gender.id" class="form-control">
+				<form:select path="gender" class="form-control">
 					<form:option value="" label="--Please Select" />
 					<form:options items="${genders}" itemValue="id" itemLabel="name" />
 				</form:select>
