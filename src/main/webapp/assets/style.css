@@ -1,0 +1,15 @@
+body {
+	width: 100%;
+	margin: 0;
+}
+
+html {
+	min-height: 100%;
+	position: relative;
+}
+
+form {
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+}

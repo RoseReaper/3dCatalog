@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Content detail</title>
-<%@include file="headerscriptsandstyles.jsp"%>
+<%@include file="header.jsp"%>
 </head>
 <body>
 <%@include file="navbar.jsp"%>
@@ -20,6 +20,8 @@
 	</ul>
 	<button type="button" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Modify</button>
 	<button type="button" class="btn btn-secondary"><i class="fas fa-trash-alt"></i> Delete</button>
+	
+	<%@include file="footer.jsp"%>
 
 </body>
 </html>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Creator list</title>
-<%@include file="headerscriptsandstyles.jsp"%>
+<%@include file="header.jsp"%>
 </head>
 <body>
 <%@include file="navbar.jsp"%>
@@ -17,6 +17,8 @@
 		<li><c:out value="${c.name}"/></li>
 	</c:forEach>
 	</ul>
+	
+	<%@include file="footer.jsp"%>
 
 </body>
 </html>

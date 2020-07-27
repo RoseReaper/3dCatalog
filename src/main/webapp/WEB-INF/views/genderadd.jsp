@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Add gender</title>
-<%@include file="headerscriptsandstyles.jsp"%>
+<%@include file="header.jsp"%>
 </head>
 <body>
 <%@include file="navbar.jsp"%>
@@ -20,6 +20,8 @@
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form:form>
+	
+	<%@include file="footer.jsp"%>
 
 </body>
 </html>

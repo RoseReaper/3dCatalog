@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Content list</title>
-<%@include file="headerscriptsandstyles.jsp"%>
+<%@include file="header.jsp"%>
 </head>
 <body>
 <%@include file="navbar.jsp"%>
@@ -17,6 +17,8 @@
 				<th>Name</th>
 				<th>SKU</th>
 				<th>Type</th>
+				<th>Gender</th>
+				<th>Generation</th>
 				<th>Creator</th>
 				<th>Software</th>
 			</tr>
@@ -29,6 +31,13 @@
 							<c:out value="${c.name}" /></a></td>
 					<td><c:out value="${c.sku}" /></td>
 					<td><c:out value="${c.type.name}" /></td>
+					<td><c:out value="${c.gender.name}" /></td>
+					<td>
+						<c:forEach items="${c.generations}" var="gen" varStatus="loopStatus">
+							<c:out value="${gen.name}" />
+							<c:if test="${!loopStatus.last}">/</c:if>
+						</c:forEach>
+					</td>
 					<td>
 						<c:forEach items="${c.creators}" var="cr" varStatus="loopStatus">
 							<c:out value="${cr.name}" />
@@ -45,12 +54,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
-	<script>
-		$(document).ready(function() {
-			$('#contentlist').DataTable();
-		});
-	</script>
+	
+	<%@include file="footer.jsp"%>
 
 </body>
 </html>
