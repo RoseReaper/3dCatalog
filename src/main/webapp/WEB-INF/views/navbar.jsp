@@ -50,32 +50,6 @@
 			        	<a class="dropdown-item" href="${softwareadd}">Software</a>
 			        </div>
 			</li>
-<!-- 			<li class="nav-item dropdown"> -->
-<!-- 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" -->
-<!-- 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Modify</a> -->
-<!-- 			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> -->
-<!-- 			        	<a class="dropdown-item" href="#">Content</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Type</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Gender</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Generation</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Creator</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Website</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Software</a> -->
-<!-- 			        </div> -->
-<!-- 			</li> -->
-<!-- 			<li class="nav-item dropdown"> -->
-<!-- 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" -->
-<!-- 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delete</a> -->
-<!-- 			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> -->
-<!-- 			        	<a class="dropdown-item" href="#">Content</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Type</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Gender</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Generation</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Creator</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Website</a> -->
-<!-- 			        	<a class="dropdown-item" href="#">Software</a> -->
-<!-- 			        </div> -->
-<!-- 			</li> -->
 		</ul>
 	</div>
 </nav>

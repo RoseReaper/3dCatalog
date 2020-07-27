@@ -32,9 +32,8 @@ public class ContentService {
 	}
 	
 	@Transactional
-	public void update(Content content) {
-		Optional<Content> modifiedContent = contentRepository.findById(content.getId());
-		contentRepository.save(modifiedContent);
+	public void deactivate(Content content) {
+		contentRepository.deactivate(content.getId());
 	}
 
 }

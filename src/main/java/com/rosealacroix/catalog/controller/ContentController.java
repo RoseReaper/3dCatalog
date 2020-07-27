@@ -85,15 +85,9 @@ public class ContentController {
 		return "redirect:/home";
 	}
 	
-	@PostMapping(path = "/contentmodify")
-	public String updateContent(Content content) {
-		contentService.update(content);
-		return "redirect:/home";
-	}
-	
 	@PostMapping(path = "/contentdelete")
 	public String deleteContent(Content content) {
-//		contentService.deactivate(content);
+		contentService.deactivate(content);
 		return "redirect:/home";
 	}
 

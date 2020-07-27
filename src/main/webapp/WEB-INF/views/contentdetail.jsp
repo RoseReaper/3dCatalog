@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,9 @@
 	<div class="card" style="width: 26rem;">
 		<div class="card-body">
 			<h2 class="card-title">${contentdetail.name}</h2>
-			<p class="card-text">SKU: <c:out value="${contentdetail.sku}" /></p>
+			<c:if test="${!empty contentdetail.sku}">
+				<p class="card-text">SKU: <c:out value="${contentdetail.sku}" /></p>
+			</c:if>
 			<c:if test="${!empty contentdetail.type}">
 				<p class="card-text">Type: <c:out value="${contentdetail.type.name}" /></p>
 			</c:if>
@@ -44,12 +46,18 @@
 						<c:if test="${!loopStatus.last}">/</c:if>
 					</c:forEach></p>
 			</c:if>
-			<p><button type="button" class="btn btn-primary">
-				<i class="fas fa-pencil-alt"></i> Modify
-			</button>
-			<button type="button" class="btn btn-secondary">
-				<i class="fas fa-trash-alt"></i> Delete
-			</button></p>
+			<div class="button-bar">
+				<form:form servletRelativeAction="/contentupdate" modelAttribute="content">
+				<button type="button" class="btn btn-primary">
+					<i class="fas fa-pencil-alt"></i> Modify
+				</button>
+				</form:form>
+				<form:form servletRelativeAction="/contentdelete" modelAttribute="content">
+				<input type="hidden" name="id" value="${contentdetail.id}" />
+				<button type="submit" class="btn btn-danger">
+					<i class="fas fa-trash-alt"></i> Delete
+				</button></form:form>
+			</div>
 		</div>
 	</div>
 

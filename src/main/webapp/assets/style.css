@@ -13,3 +13,9 @@ form {
 	margin-left: 15%;
 	margin-right: 15%;
 }
+
+.button-bar > form {
+	display: inline-block;
+	width: auto;
+	margin: 0;
+}
