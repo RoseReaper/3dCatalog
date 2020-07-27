@@ -1,8 +1,16 @@
 package com.rosealacroix.catalog.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 
 /**
@@ -19,9 +27,11 @@ public class Website implements Serializable {
 	@Column(name="website_id")
 	private Long id;
 
+	@NotEmpty(message = "Please enter the website''s name.")
 	@Column(name="website_name")
 	private String name;
 
+	@NotEmpty(message = "Please enter the website''s URL.")
 	@Column(name="website_url")
 	private String url;
 
@@ -76,6 +86,25 @@ public class Website implements Serializable {
 		content.setWebsite(null);
 
 		return content;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Website)) {
+			return false;
+		}
+		Website website = (Website) obj;
+		return this.id !=null && this.id.equals(website.id);
+	}
+	
+	public static Website valueOf(String id) {
+		if (id == null || id.isEmpty()) {
+			return null;
+		}
+		Long idLong = Long.valueOf(id);
+		Website website = new Website();
+		website.setId(idLong);
+		return website;
 	}
 
 }

@@ -15,6 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -35,21 +37,25 @@ public class Content implements Serializable {
 	@Column(name="content_isactive")
 	private boolean active;
 
+	@NotEmpty(message = "Please enter the content''s name.")
 	@Column(name="content_name")
 	private String name;
 
 	@Column(name="content_sku")
 	private String sku;
 
+	@NotEmpty(message = "Please enter the content''s URL.")
 	@Column(name="content_url")
 	private String url;
 
 	//bi-directional many-to-one association to Type
+	@NotNull(message = "Please select the content''s type.")
 	@ManyToOne
 	@JoinColumn(name="type_id")
 	private Type type;
 
 	//bi-directional many-to-one association to Website
+	@NotNull(message = "Please select one website.")
 	@ManyToOne
 	@JoinColumn(name="website_id")
 	private Website website;

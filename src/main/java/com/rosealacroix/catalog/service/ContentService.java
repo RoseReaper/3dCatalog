@@ -30,5 +30,11 @@ public class ContentService {
 		content.setActive(true);
 		contentRepository.save(content);
 	}
+	
+	@Transactional
+	public void update(Content content) {
+		Optional<Content> modifiedContent = contentRepository.findById(content.getId());
+		contentRepository.save(modifiedContent);
+	}
 
 }

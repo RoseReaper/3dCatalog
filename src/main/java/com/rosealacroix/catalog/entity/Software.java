@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotEmpty;
 
 
 /**
@@ -24,6 +25,7 @@ public class Software implements Serializable {
 	@Column(name="software_id")
 	private Long id;
 
+	@NotEmpty(message = "Please enter the software''s name.")
 	@Column(name="software_name")
 	private String name;
 

@@ -21,7 +21,7 @@ public class GenerationService {
 	}
 	
 	@Transactional
-	public void save(Generation generation) {
+	public void create(Generation generation) {
 		generationRepository.save(generation);
 	}
 

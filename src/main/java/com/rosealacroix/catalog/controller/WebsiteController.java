@@ -2,9 +2,12 @@ package com.rosealacroix.catalog.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -30,8 +33,11 @@ public class WebsiteController {
 	}
 	
 	@PostMapping(path="/websiteadd")
-	public String submitWebsite(Website website) {
-		websiteService.save(website);
+	public String submitWebsite(@Valid Website website, BindingResult result) {
+		if(result.hasErrors()) {
+			return "websiteadd";
+		}
+		websiteService.create(website);
 		return "redirect:/websitelist";
 	}
 

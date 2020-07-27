@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotEmpty;
 
 
 /**
@@ -24,6 +25,7 @@ public class Creator implements Serializable {
 	@Column(name="vendor_id")
 	private Long id;
 
+	@NotEmpty(message = "Please enter the creator''s name.")
 	@Column(name="vendor_name")
 	private String name;
 

@@ -21,7 +21,7 @@ public class TypeService {
 	}
 	
 	@Transactional
-	public void save(Type type) {
+	public void create(Type type) {
 		typeRepository.save(type);
 	}
 

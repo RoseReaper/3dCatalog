@@ -1,8 +1,16 @@
 package com.rosealacroix.catalog.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 
 /**
@@ -19,6 +27,7 @@ public class Gender implements Serializable {
 	@Column(name="gender_id")
 	private Long id;
 
+	@NotEmpty(message = "Please enter the gender''s name.")
 	@Column(name="gender_name")
 	private String name;
 	

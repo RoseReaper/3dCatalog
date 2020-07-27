@@ -21,7 +21,7 @@ public class GenderService {
 	}
 	
 	@Transactional
-	public void save(Gender gender) {
+	public void create(Gender gender) {
 		genderRepository.save(gender);
 	}
 

@@ -3,9 +3,12 @@ package com.rosealacroix.catalog.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -74,8 +77,23 @@ public class ContentController {
 	}
 
 	@PostMapping(path = "/contentadd")
-	public String submitContent(Content content) {
+	public String submitContent(Model model, @Valid Content content, BindingResult result) {
+		if(result.hasErrors()) {
+			return this.displayForm(model, content);
+		}
 		contentService.create(content);
+		return "redirect:/home";
+	}
+	
+	@PostMapping(path = "/contentmodify")
+	public String updateContent(Content content) {
+		contentService.update(content);
+		return "redirect:/home";
+	}
+	
+	@PostMapping(path = "/contentdelete")
+	public String deleteContent(Content content) {
+//		contentService.deactivate(content);
 		return "redirect:/home";
 	}
 

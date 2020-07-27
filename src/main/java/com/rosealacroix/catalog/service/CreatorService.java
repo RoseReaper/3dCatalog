@@ -21,7 +21,7 @@ public class CreatorService {
 	}
 	
 	@Transactional
-	public void save(Creator creator) {
+	public void create(Creator creator) {
 		creatorRepository.save(creator);
 	}
 

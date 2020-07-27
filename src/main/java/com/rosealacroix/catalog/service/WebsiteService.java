@@ -21,7 +21,7 @@ public class WebsiteService {
 	}
 	
 	@Transactional
-	public void save(Website website) {
+	public void create(Website website) {
 		websiteRepository.save(website);
 	}
 

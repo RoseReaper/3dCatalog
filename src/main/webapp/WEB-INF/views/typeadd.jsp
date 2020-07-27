@@ -16,7 +16,7 @@
 		<div class="form-group">
 			<label>Name: </label>
 			<form:input path="name" class="form-control" />
-			<form:errors path="name" />
+			<form:errors path="name" element="small" cssClass="form-text text-danger" />
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form:form>

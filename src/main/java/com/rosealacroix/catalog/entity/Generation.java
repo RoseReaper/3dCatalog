@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotEmpty;
 
 
 /**
@@ -24,6 +25,7 @@ public class Generation implements Serializable {
 	@Column(name="generation_id")
 	private Long id;
 
+	@NotEmpty(message = "Please enter the generation''s name.")
 	@Column(name="generation_name")
 	private String name;
 
