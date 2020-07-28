@@ -14,7 +14,11 @@
 
 	<ul>
 	<c:forEach items="${creators}" var="c">
-		<li><c:out value="${c.name}"/></li>
+		<li><c:out value="${c.name}"/>
+			<a href="<c:url value="/creatoredit">
+				<c:param name="id" value="${c.id}"/></c:url>" class="btn btn-primary">
+				<i class="fas fa-pencil-alt"></i></a>
+		</li>
 	</c:forEach>
 	</ul>
 	

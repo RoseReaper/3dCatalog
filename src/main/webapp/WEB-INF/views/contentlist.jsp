@@ -19,9 +19,9 @@
 				<th>SKU</th>
 				<th>Type</th>
 				<th>Gender</th>
-				<th>Generation</th>
-				<th>Creator</th>
-				<th>Software</th>
+				<th>Generation(s)</th>
+				<th>Creator(s)</th>
+				<th>Software(s)</th>
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
