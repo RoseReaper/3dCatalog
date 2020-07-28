@@ -12,9 +12,16 @@
 
 	<h1>All websites</h1>
 
-	<ul>
+	<ul class="ul-attributes-list">
 		<c:forEach items="${websites}" var="w">
-			<li><c:out value="${w.name}" /></li>
+			<li class="il-attributes-list">
+				<c:out value="${w.name}" />
+				<div class="edit-button">
+					<a href="<c:url value="/websiteedit">
+					<c:param name="id" value="${w.id}"/></c:url>" class="btn btn-primary">
+					<i class="fas fa-pencil-alt"></i></a>
+				</div>
+			</li>
 		</c:forEach>
 	</ul>
 

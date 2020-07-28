@@ -1,6 +1,7 @@
 package com.rosealacroix.catalog.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -29,15 +30,31 @@ public class WebsiteController {
 	
 	@GetMapping(path="/websiteadd")
 	public String displayForm(Model model, Website website) {
-		return "websiteadd";
+		return "websiteform";
 	}
 	
 	@PostMapping(path="/websiteadd")
 	public String submitWebsite(@Valid Website website, BindingResult result) {
 		if(result.hasErrors()) {
-			return "websiteadd";
+			return "websiteform";
 		}
-		websiteService.create(website);
+		websiteService.createOrUpdate(website);
+		return "redirect:/websitelist";
+	}
+	
+	@GetMapping(path = "/websiteedit")
+	public String displayEditForm(Model model, long id) {
+		Optional<Website> website = websiteService.findById(id);
+		model.addAttribute("website", website.get());
+		return "websiteform";
+	}
+	
+	@PostMapping(path = "/websiteedit")
+	public String updateWebsite(Model model, @Valid Website website, BindingResult result) {
+		if(result.hasErrors()) {
+			return "websiteform";
+		}
+		websiteService.createOrUpdate(website);
 		return "redirect:/websitelist";
 	}
 
