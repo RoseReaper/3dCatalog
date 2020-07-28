@@ -19,3 +19,19 @@ td > form {
 	width: auto;
 	margin: 0;
 }
+
+.edit-button {
+	padding-bottom: 5px;
+}
+
+.ul-attributes-list {
+	width: 20rem;
+}
+
+.il-attributes-list {
+	display: flex;
+ 	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	list-style: none;
+}

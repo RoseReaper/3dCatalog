@@ -12,12 +12,15 @@
 
 	<h1>All creators</h1>
 
-	<ul>
+	<ul class="ul-attributes-list">
 	<c:forEach items="${creators}" var="c">
-		<li><c:out value="${c.name}"/>
-			<a href="<c:url value="/creatoredit">
+		<li class="il-attributes-list">
+			<c:out value="${c.name}"/>
+			<div class="edit-button">
+				<a href="<c:url value="/creatoredit">
 				<c:param name="id" value="${c.id}"/></c:url>" class="btn btn-primary">
 				<i class="fas fa-pencil-alt"></i></a>
+			</div>
 		</li>
 	</c:forEach>
 	</ul>

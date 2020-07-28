@@ -12,12 +12,15 @@
 
 	<h1>All genders</h1>
 
-	<ul>
+	<ul class="ul-attributes-list">
 	<c:forEach items="${genders}" var="g">
-		<li><c:out value="${g.name}"/>
-		<a href="<c:url value="/genderedit">
+		<li class="il-attributes-list">
+			<c:out value="${g.name}"/>
+			<div class="edit-button">
+				<a href="<c:url value="/genderedit">
 				<c:param name="id" value="${g.id}"/></c:url>" class="btn btn-primary">
 				<i class="fas fa-pencil-alt"></i></a>
+			</div>
 		</li>
 	</c:forEach>
 	</ul>
