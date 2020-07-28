@@ -26,7 +26,7 @@ public class SoftwareService {
     }
 	
 	@Transactional
-	public void create(Software software) {
+	public void createOrUpdate(Software software) {
 		softwareRepository.save(software);
 	}
 	

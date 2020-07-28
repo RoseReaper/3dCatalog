@@ -12,9 +12,16 @@
 
 	<h1>All softwares</h1>
 
-	<ul>
+	<ul class="ul-attributes-list">
 	<c:forEach items="${softwares}" var="s">
-		<li><c:out value="${s.name}"/></li>
+		<li class="il-attributes-list">
+			<c:out value="${s.name}"/>
+			<div class="edit-button">
+				<a href="<c:url value="/softwareedit">
+				<c:param name="id" value="${s.id}"/></c:url>" class="btn btn-primary">
+				<i class="fas fa-pencil-alt"></i></a>
+			</div>
+		</li>
 	</c:forEach>
 	</ul>
 	

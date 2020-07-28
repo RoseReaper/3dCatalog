@@ -1,6 +1,7 @@
 package com.rosealacroix.catalog.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -11,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.rosealacroix.catalog.entity.Creator;
 import com.rosealacroix.catalog.entity.Software;
 import com.rosealacroix.catalog.service.SoftwareService;
 
@@ -29,15 +31,31 @@ public class SoftwareController {
 	
 	@GetMapping(path="/softwareadd")
 	public String displayForm(Model model, Software software) {
-		return "softwareadd";
+		return "softwareform";
 	}
 	
 	@PostMapping(path="/softwareadd")
 	public String submitSoftware(@Valid Software software, BindingResult result) {
 		if(result.hasErrors()) {
-			return "softwareadd";
+			return "softwareform";
 		}
-		softwareService.create(software);
+		softwareService.createOrUpdate(software);
+		return "redirect:/softwarelist";
+	}
+	
+	@GetMapping(path = "/softwareedit")
+	public String displayEditForm(Model model, long id) {
+		Optional<Software> software = softwareService.findById(id);
+		model.addAttribute("software", software.get());
+		return "softwareform";
+	}
+	
+	@PostMapping(path = "/softwareedit")
+	public String updateSoftware(Model model, @Valid Software software, BindingResult result) {
+		if(result.hasErrors()) {
+			return "softwareform";
+		}
+		softwareService.createOrUpdate(software);
 		return "redirect:/softwarelist";
 	}
 	
