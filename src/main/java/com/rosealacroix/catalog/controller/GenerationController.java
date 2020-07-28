@@ -1,6 +1,7 @@
 package com.rosealacroix.catalog.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -29,15 +30,31 @@ public class GenerationController {
 	
 	@GetMapping(path="/generationadd")
 	public String displayForm(Model model, Generation generation) {
-		return "generationadd";
+		return "generationform";
 	}
 	
 	@PostMapping(path="/generationadd")
 	public String submitGeneration(@Valid Generation generation, BindingResult result) {
 		if(result.hasErrors()) {
-			return "generationadd";
+			return "generationform";
 		}
-		generationService.create(generation);
+		generationService.createOrUpdate(generation);
+		return "redirect:/generationlist";
+	}
+	
+	@GetMapping(path = "/generationedit")
+	public String displayEditForm(Model model, long id) {
+		Optional<Generation> generation = generationService.findById(id);
+		model.addAttribute("generation", generation.get());
+		return "generationform";
+	}
+	
+	@PostMapping(path = "/generationedit")
+	public String updateGeneration(Model model, @Valid Generation generation, BindingResult result) {
+		if(result.hasErrors()) {
+			return "generationform";
+		}
+		generationService.createOrUpdate(generation);
 		return "redirect:/generationlist";
 	}
 
