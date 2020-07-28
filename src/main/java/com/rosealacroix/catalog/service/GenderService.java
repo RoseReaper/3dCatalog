@@ -1,6 +1,7 @@
 package com.rosealacroix.catalog.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -20,8 +21,12 @@ public class GenderService {
 		return genderRepository.findByOrderByName();
 	}
 	
+	public Optional<Gender> findById(long id) {
+		return genderRepository.findById(id);
+	}
+	
 	@Transactional
-	public void create(Gender gender) {
+	public void createOrUpdate(Gender gender) {
 		genderRepository.save(gender);
 	}
 

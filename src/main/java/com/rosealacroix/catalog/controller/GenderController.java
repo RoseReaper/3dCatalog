@@ -1,6 +1,7 @@
 package com.rosealacroix.catalog.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -29,15 +30,31 @@ public class GenderController {
 	
 	@GetMapping(path="/genderadd")
 	public String displayForm(Model model, Gender gender) {
-		return "genderadd";
+		return "genderform";
 	}
 	
 	@PostMapping(path="/genderadd")
 	public String submitGender(@Valid Gender gender, BindingResult result) {
 		if(result.hasErrors()) {
-			return "genderadd";
+			return "genderform";
 		}
-		genderService.create(gender);
+		genderService.createOrUpdate(gender);
+		return "redirect:/genderlist";
+	}
+	
+	@GetMapping(path = "/genderedit")
+	public String displayEditForm(Model model, long id) {
+		Optional<Gender> gender = genderService.findById(id);
+		model.addAttribute("gender", gender.get());
+		return "genderform";
+	}
+	
+	@PostMapping(path = "/genderedit")
+	public String updateGender(Model model, @Valid Gender gender, BindingResult result) {
+		if(result.hasErrors()) {
+			return "genderform";
+		}
+		genderService.createOrUpdate(gender);
 		return "redirect:/genderlist";
 	}
 

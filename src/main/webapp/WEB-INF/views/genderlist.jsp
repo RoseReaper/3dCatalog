@@ -14,7 +14,11 @@
 
 	<ul>
 	<c:forEach items="${genders}" var="g">
-		<li><c:out value="${g.name}"/></li>
+		<li><c:out value="${g.name}"/>
+		<a href="<c:url value="/genderedit">
+				<c:param name="id" value="${g.id}"/></c:url>" class="btn btn-primary">
+				<i class="fas fa-pencil-alt"></i></a>
+		</li>
 	</c:forEach>
 	</ul>
 	
