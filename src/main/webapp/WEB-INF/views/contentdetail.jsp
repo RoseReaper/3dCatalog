@@ -46,18 +46,6 @@
 						<c:if test="${!loopStatus.last}">/</c:if>
 					</c:forEach></p>
 			</c:if>
-			<div class="button-bar">
-				<form:form servletRelativeAction="/contentupdate" modelAttribute="content">
-				<button type="button" class="btn btn-primary">
-					<i class="fas fa-pencil-alt"></i> Modify
-				</button>
-				</form:form>
-				<form:form servletRelativeAction="/contentdelete" modelAttribute="content">
-				<input type="hidden" name="id" value="${contentdetail.id}" />
-				<button type="submit" class="btn btn-danger">
-					<i class="fas fa-trash-alt"></i> Delete
-				</button></form:form>
-			</div>
 		</div>
 	</div>
 

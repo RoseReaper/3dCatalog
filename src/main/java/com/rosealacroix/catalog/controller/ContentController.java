@@ -61,6 +61,44 @@ public class ContentController {
 
 	@GetMapping(path = "/contentadd")
 	public String displayForm(Model model, Content content) {
+		this.addConstraintParameters(model);
+		return "contentform";
+	}
+
+	@PostMapping(path = "/contentadd")
+	public String submitContent(Model model, @Valid Content content, BindingResult result) {
+		if(result.hasErrors()) {
+			return this.displayForm(model, content);
+		}
+		contentService.createOrUpdate(content);
+		return "redirect:/home";
+	}
+	
+	@PostMapping(path = "/contentdelete")
+	public String deleteContent(Content content) {
+		contentService.deactivate(content);
+		return "redirect:/home";
+	}
+	
+	@GetMapping(path = "/contentedit")
+	public String displayEditForm(Model model, long id) {
+		this.addConstraintParameters(model);
+		Optional<Content> contentdetail = contentService.findById(id);
+		model.addAttribute("content", contentdetail.get());
+		return "contentform";
+	}
+	
+	@PostMapping(path = "/contentedit")
+	public String updateContent(Model model, @Valid Content content, BindingResult result) {
+		if(result.hasErrors()) {
+			this.addConstraintParameters(model);
+			return "contentform";
+		}
+		contentService.createOrUpdate(content);
+		return "redirect:/home";
+	}
+	
+	private void addConstraintParameters(Model model) {
 		List<Type> types = typeService.getAll();
 		List<Software> softwares = softwareService.getAll();
 		List<Website> websites = websiteService.getAll();
@@ -73,22 +111,6 @@ public class ContentController {
 		model.addAttribute("creators", creators);
 		model.addAttribute("genders", genders);
 		model.addAttribute("generations", generations);
-		return "contentadd";
-	}
-
-	@PostMapping(path = "/contentadd")
-	public String submitContent(Model model, @Valid Content content, BindingResult result) {
-		if(result.hasErrors()) {
-			return this.displayForm(model, content);
-		}
-		contentService.create(content);
-		return "redirect:/home";
-	}
-	
-	@PostMapping(path = "/contentdelete")
-	public String deleteContent(Content content) {
-		contentService.deactivate(content);
-		return "redirect:/home";
 	}
 
 }

@@ -26,7 +26,7 @@ public class ContentService {
     }
 	
 	@Transactional
-	public void create(Content content) {
+	public void createOrUpdate(Content content) {
 		content.setActive(true);
 		contentRepository.save(content);
 	}

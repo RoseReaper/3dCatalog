@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +22,8 @@
 				<th>Generation</th>
 				<th>Creator</th>
 				<th>Software</th>
+				<th>Edit</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -49,6 +52,19 @@
 							<c:out value="${s.name}" />
 							<c:if test="${!loopStatus.last}">/</c:if>
 						</c:forEach>
+					</td>
+					<td>
+						<a href="<c:url value="/contentedit">
+						<c:param name="id" value="${c.id}"/></c:url>" class="btn btn-primary">
+							<i class="fas fa-pencil-alt"></i></a>
+					</td>
+					<td>
+						<form:form servletRelativeAction="/contentdelete" modelAttribute="content">
+							<input type="hidden" name="id" value="${c.id}" />
+							<button type="submit" class="btn btn-danger">
+								<i class="fas fa-trash-alt"></i>
+							</button>
+						</form:form>
 					</td>
 				</tr>
 			</c:forEach>

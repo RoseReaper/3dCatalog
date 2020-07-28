@@ -4,16 +4,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Add content</title>
 <%@include file="header.jsp"%>
+<meta charset="UTF-8">
+<c:if test="${empty content.id}">
+	<title>Add content</title>
+</c:if>
+<c:if test="${!empty content.id}">
+	<title>Edit content</title>
+</c:if>
 </head>
 <body>
 	<%@include file="navbar.jsp"%>
 
-	<h1>Add a new content</h1>
+	<c:if test="${empty content.id}">
+		<h1>Add a new content</h1>
+	</c:if>
+	<c:if test="${!empty content.id}">
+		<h1>Edit this content</h1>
+	</c:if>
 
-	<form:form servletRelativeAction="/contentadd" modelAttribute="content">
+	<form:form servletRelativeAction="${empty content.id ? '/contentadd' : '/contentedit'}" modelAttribute="content">
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label>Name</label>
@@ -76,6 +86,7 @@
 				<form:options items="${softwares}" itemValue="id" itemLabel="name" />
 			</form:select>
 		</div>
+		<form:input path="id" type="hidden" />
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form:form>
 	

@@ -14,7 +14,7 @@ form {
 	margin-right: 15%;
 }
 
-.button-bar > form {
+td > form {
 	display: inline-block;
 	width: auto;
 	margin: 0;
