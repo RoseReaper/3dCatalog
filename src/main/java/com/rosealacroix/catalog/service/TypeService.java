@@ -17,7 +17,7 @@ public class TypeService {
 	private TypeRepository typeRepository;
 	
 	public List<Type> getAll() {
-		return typeRepository.findAll();
+		return typeRepository.findByOrderByName();
 	}
 	
 	@Transactional

@@ -18,7 +18,7 @@ public class SoftwareService {
 	private SoftwareRepository softwareRepository;
 	
 	public List<Software> getAll() {
-		return softwareRepository.findAll();
+		return softwareRepository.findByOrderByName();
 	}
 	
 	public Optional<Software> findById(long id) {

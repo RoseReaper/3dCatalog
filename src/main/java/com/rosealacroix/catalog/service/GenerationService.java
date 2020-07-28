@@ -17,7 +17,7 @@ public class GenerationService {
 	private GenerationRepository generationRepository;
 	
 	public List<Generation> getAll() {
-		return generationRepository.findAll();
+		return generationRepository.findByOrderByName();
 	}
 	
 	@Transactional

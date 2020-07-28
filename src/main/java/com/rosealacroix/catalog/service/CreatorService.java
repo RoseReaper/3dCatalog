@@ -17,7 +17,7 @@ public class CreatorService {
 	private CreatorRepository creatorRepository;
 	
 	public List<Creator> getAll() {
-		return creatorRepository.findAll();
+		return creatorRepository.findByOrderByName();
 	}
 	
 	@Transactional

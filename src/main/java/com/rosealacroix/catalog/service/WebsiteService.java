@@ -17,7 +17,7 @@ public class WebsiteService {
 	private WebsiteRepository websiteRepository;
 	
 	public List<Website> getAll() {
-		return websiteRepository.findAll();
+		return websiteRepository.findByOrderByName();
 	}
 	
 	@Transactional

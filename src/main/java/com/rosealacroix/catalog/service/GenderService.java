@@ -17,7 +17,7 @@ public class GenderService {
 	private GenderRepository genderRepository;
 	
 	public List<Gender> getAll() {
-		return genderRepository.findAll();
+		return genderRepository.findByOrderByName();
 	}
 	
 	@Transactional
