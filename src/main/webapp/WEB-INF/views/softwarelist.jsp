@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="header.jsp"%>
 <meta charset="UTF-8">
 <title>Software list</title>
-<%@include file="header.jsp"%>
 </head>
 <body>
 <%@include file="navbar.jsp"%>
