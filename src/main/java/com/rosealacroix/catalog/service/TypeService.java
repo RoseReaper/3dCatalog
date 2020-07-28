@@ -1,6 +1,7 @@
 package com.rosealacroix.catalog.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -20,8 +21,12 @@ public class TypeService {
 		return typeRepository.findByOrderByName();
 	}
 	
+	public Optional<Type> findById(long id) {
+		return typeRepository.findById(id);
+	}
+	
 	@Transactional
-	public void create(Type type) {
+	public void createOrUpdate(Type type) {
 		typeRepository.save(type);
 	}
 

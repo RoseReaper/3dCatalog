@@ -1,6 +1,7 @@
 package com.rosealacroix.catalog.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -29,15 +30,31 @@ public class TypeController {
 	
 	@GetMapping(path="/typeadd")
 	public String displayForm(Model model, Type type) {
-		return "typeadd";
+		return "typeform";
 	}
 	
 	@PostMapping(path="/typeadd")
 	public String submitType(@Valid Type type, BindingResult result) {
 		if(result.hasErrors()) {
-			return "typeadd";
+			return "typeform";
 		}
-		typeService.create(type);
+		typeService.createOrUpdate(type);
+		return "redirect:/typelist";
+	}
+	
+	@GetMapping(path = "/typeedit")
+	public String displayEditForm(Model model, long id) {
+		Optional<Type> type = typeService.findById(id);
+		model.addAttribute("type", type.get());
+		return "typeform";
+	}
+	
+	@PostMapping(path = "/typeedit")
+	public String updateType(Model model, @Valid Type type, BindingResult result) {
+		if(result.hasErrors()) {
+			return "typeform";
+		}
+		typeService.createOrUpdate(type);
 		return "redirect:/typelist";
 	}
 

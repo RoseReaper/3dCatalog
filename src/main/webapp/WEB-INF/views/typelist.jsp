@@ -12,9 +12,16 @@
 
 	<h1>All types</h1>
 
-	<ul>
+	<ul class="ul-attributes-list">
 	<c:forEach items="${types}" var="t">
-		<li><c:out value="${t.name}"/></li>
+		<li class="il-attributes-list">
+			<c:out value="${t.name}"/>
+			<div class="edit-button">
+				<a href="<c:url value="/typeedit">
+				<c:param name="id" value="${t.id}"/></c:url>" class="btn btn-primary">
+				<i class="fas fa-pencil-alt"></i></a>
+			</div>
+		</li>
 	</c:forEach>
 	</ul>
 	
